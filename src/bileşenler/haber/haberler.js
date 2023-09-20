@@ -88,6 +88,18 @@ const data = [
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`,
   },
+  {
+    baslik: "2023-2024 SEZONU TRENDYOL SÜPER LİG ŞAMPİYONU FENERBAHÇE",
+    tarih: "13 MAYIS 2024",
+    ilkParagraf:
+      "Galatasarayın sahası Rams Parkta oynanan maçta fenerbahçe son dakikada Sebastian Symanzski'nin bulduğu golle maçı 3-2 kazandı ve son maç öncesi puan farkını 3'e çıkardı",
+
+    ikinciParagraf:
+      "İkili averajda önde bulunan sarı lacivertli takım son maç öncesi şampiyonluğu garantilemiş oldu.Dün kupa töreninin yapılmasına izin vermeyen galatasaray yönetimi ve taraftarlar arbede çıkardı.Uzun uğraşlar sonucu arbede engellendi ve FENERBAHÇE'nin kupa töreni tamamlandı",
+
+    ucuncuParagraf:
+      "Fenerbahçenin bu seneki en öenmli oyuncuları Edin Dzeko veDusan Tadicin keyifli tavırları ve mutlulukları tüm Fenerbahçeli taraftarların eminim ki içini ısıtmıştır",
+  },
 ];
 
 /*
@@ -115,3 +127,35 @@ const data = [
   Adım 5: Veri dizisine yeni haber nesnesi eklemeyi deneyin. Diğer verilerle aynı yapıda olmasına dikkat edin.
   Eklediğiniz yeni haberi görmek için sayfayı yenileyin.
 */
+const haberYapici = (arr) => {
+  const articlesContainer = document.querySelector(".articles");
+  arr.forEach((element) => {
+    const divSection = document.createElement("div");
+    divSection.classList.add("article");
+    const divH2 = document.createElement("h2");
+    divSection.appendChild(divH2);
+    divH2.textContent = element.baslik;
+    const divP = document.createElement("p");
+    divP.classList.add("tarih");
+    divP.textContent = element.tarih;
+    divSection.appendChild(divP);
+    const divpBir = document.createElement("p");
+    const divpIki = document.createElement("p");
+    const divpUc = document.createElement("p");
+    divSection.appendChild(divpBir);
+    divSection.appendChild(divpIki);
+    divSection.appendChild(divpUc);
+    divpBir.textContent = element.ilkParagraf;
+    divpIki.textContent = element.ikinciParagraf;
+    divpUc.textContent = element.ucuncuParagraf;
+    const divButton = document.createElement("button");
+    divSection.appendChild(divButton);
+    divButton.classList.add("expandButton");
+    divButton.textContent = "+";
+    articlesContainer.appendChild(divSection);
+    divButton.addEventListener("click", function () {
+      divSection.classList.toggle("article-open");
+    });
+  });
+};
+haberYapici(data);
