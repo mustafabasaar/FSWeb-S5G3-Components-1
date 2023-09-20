@@ -49,6 +49,7 @@ const menuYapici = (arr) => {
   menuButton.addEventListener("click", function () {
     divContainer.classList.toggle("menu--open");
   });
-  document.body.appendChild(divContainer);
+  const menuLocation = document.querySelector(".header");
+  menuLocation.appendChild(divContainer);
 };
 menuYapici(menuElemanlari);
